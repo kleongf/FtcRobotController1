@@ -51,6 +51,7 @@ public class TestOpMode extends LinearOpMode {
         // Initialize the hardware variables. Note that the strings used here must correspond
         // to the names assigned during the robot configuration step on the DS or RC devices.
         leftFrontDrive  = hardwareMap.get(DcMotor.class, "left_front_drive");
+        leftFrontDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         servoTest = hardwareMap.get(Servo.class, "servoTest");
 
         // ########################################################################################
@@ -91,7 +92,9 @@ public class TestOpMode extends LinearOpMode {
             telemetry.addData("Target Power", tgtPower);
             telemetry.addData("Status", "Running");
 
-            // leftFrontDrive.setPower(leftFrontPower);
+            leftFrontDrive.setTargetPosition(120);
+            leftFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            leftFrontDrive.setPower(0.5);
 
         }
     }
