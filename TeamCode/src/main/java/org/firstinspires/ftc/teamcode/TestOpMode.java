@@ -81,10 +81,7 @@ public class TestOpMode extends LinearOpMode {
             if(gamepad1.y) {
                 // move to 0 degrees.
                 servoTest.setPosition(0);
-            } else if (gamepad1.x || gamepad1.b) {
-                // move to 90 degrees.
-                servoTest.setPosition(0.5);
-            } else if (gamepad1.a) {
+            } else if (gamepad1.x) {
                 // move to 180 degrees.
                 servoTest.setPosition(1);
             }
