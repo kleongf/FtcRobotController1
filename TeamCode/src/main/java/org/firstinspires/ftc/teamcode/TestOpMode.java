@@ -74,9 +74,10 @@ public class TestOpMode extends LinearOpMode {
         runtime.reset();
 
         double tgtPower = 0;
+        int motorPosition = 0;
         while (opModeIsActive()) {
             tgtPower = -this.gamepad1.left_stick_y;
-
+            leftFrontDrive.setPower(0.5);
             // check to see if we need to move the servo.
             if(gamepad1.y) {
                 // move to 0 degrees.
@@ -85,13 +86,25 @@ public class TestOpMode extends LinearOpMode {
                 // move to 180 degrees.
                 servoTest.setPosition(1);
             }
+            if(gamepad1.a) {
+                // move up
+                if (motorPosition <= 1000){
+                    motorPosition += 5;
+                    leftFrontDrive.setTargetPosition(motorPosition);
+                }
+            } else if(gamepad1.b) {
+                // move up
+                if (motorPosition >= 5){
+                    motorPosition -= 5;
+                    leftFrontDrive.setTargetPosition(motorPosition);
+                }
+            }
+
             telemetry.addData("Servo Position", servoTest.getPosition());
             telemetry.addData("Target Power", tgtPower);
             telemetry.addData("Status", "Running");
 
-            leftFrontDrive.setTargetPosition(120);
-            leftFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            leftFrontDrive.setPower(0.5);
+
 
         }
     }
