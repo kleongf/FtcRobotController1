@@ -7,6 +7,14 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.opencv.core.*;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.imgproc.Moments;
+import org.openftc.easyopencv.OpenCvCamera;
+import org.openftc.easyopencv.OpenCvCameraFactory;
+import org.openftc.easyopencv.OpenCvCameraRotation;
+import org.openftc.easyopencv.OpenCvPipeline;
+
 /*
  * This file contains an example of a Linear "OpMode".
  * An OpMode is a 'program' that runs in either the autonomous or the teleop period of an FTC match.
@@ -38,6 +46,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @TeleOp(name="Basic: Omni Linear OpMode", group="Linear OpMode")
 @Disabled
 public class TestOpMode extends LinearOpMode {
+    public static void main(String[] args) {
+        System.out.println("help me");
+    }
 
     // Declare OpMode members for each of the 4 motors.
     private ElapsedTime runtime = new ElapsedTime();
@@ -109,3 +120,4 @@ public class TestOpMode extends LinearOpMode {
         }
     }
 }
+
